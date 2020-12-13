@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UIController">
+    <children>
+        <GridPane layoutX="14.0" layoutY="53.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="350.0" AnchorPane.bottomAnchor="240.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="850.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="150.0" prefWidth="150.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField fx:id="leftBoundTextField" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="28.0" GridPane.columnIndex="1">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" right="15.0" top="5.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="rightBoundTextField" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="28.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" right="15.0" top="5.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="stepTextField" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="28.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" right="15.0" top="5.0" />
+                    </GridPane.margin>
+                </TextField>
+                <Button mnemonicParsing="false" onAction="#calculate" prefWidth="340.0" text="Calculate" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                </Button>
+                <Label text="Enter left bound:">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="Enter right bound:" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="Enter step:" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                </Label>
+            </children>
+        </GridPane>
+        <ScrollPane layoutY="165.0" prefHeight="235.0" prefWidth="350.0">
+            <content>
+                <TextArea fx:id="resultsTextArea" editable="false" prefHeight="233.0" prefWidth="348.0" />
+            </content>
+        </ScrollPane>
+      <LineChart fx:id="chart" layoutX="350.0" prefHeight="400.0" prefWidth="850.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" side="LEFT" />
+        </yAxis>
+      </LineChart>
+    </children>
+</AnchorPane>
