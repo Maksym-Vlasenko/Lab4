@@ -36,6 +36,7 @@ public class UIController {
     @FXML
     private void calculate() {
         try {
+            resultsTextArea.clear();
             double leftBound = getDoubleFromTextField(leftBoundTextField);
             double rightBound = getDoubleFromTextField(rightBoundTextField);
             double step = getDoubleFromTextField(stepTextField);
@@ -47,15 +48,15 @@ public class UIController {
             appendTextToTextArea(String.format("Y count: %d%n", yValues.length));
             appendTextToTextArea(String.format("X count: %d%n%n", xValues.length));
 
-            double maxY = lab2.findMaxY(yValues);
-            int maxYOrdinal = lab2.findElementOrdinal(yValues, maxY);
+            int maxYOrdinal = lab2.findMaxElementOrdinal(yValues);
+            double maxY = yValues[maxYOrdinal];
             double maxYXValue = xValues[maxYOrdinal];
             appendTextToTextArea(String.format("Max Y = %.3f%n", maxY));
             appendTextToTextArea(String.format("Max Y argument (X) = %.3f%n", maxYXValue));
             appendTextToTextArea(String.format("Max Y ordinal = %d%n%n", maxYOrdinal));
 
-            double minY = lab2.findMinY(yValues);
-            int minYOrdinal = lab2.findElementOrdinal(yValues, minY);
+            int minYOrdinal = lab2.findMinElementOrdinal(yValues);
+            double minY = yValues[minYOrdinal];
             double minYXValue = xValues[minYOrdinal];
             appendTextToTextArea(String.format("Min Y = %.3f%n", minY));
             appendTextToTextArea(String.format("Min Y argument (X) = %.3f%n", minYXValue));
@@ -73,6 +74,7 @@ public class UIController {
     }
 
     private void buildChart(double[] xValues, double[] yValues) {
+        chart.getData().clear();
         XYChart.Series<String, Double> dataSeries = new XYChart.Series<>();
         for (int i = 0; i < xValues.length; i++) {
             String x = String.format("%.1f", xValues[i]);

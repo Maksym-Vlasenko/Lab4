@@ -5,9 +5,9 @@ public class Lab2 {
     public double calculateY(double x) {
         double y;
         double a = 2.4;
-        if (Double.compare(x, a) > 0) {
+        if (DoubleUtils.greaterThan(x, a)) {
             y = x * Math.sqrt(x - a);
-        } else if (Double.compare(x, a) == 0) {
+        } else if (DoubleUtils.equals(x, a)) {
             y = x * Math.sin(a * x);
         } else {
             y = Math.pow(Math.E, -(a * x)) * Math.cos(a * x);
@@ -17,7 +17,8 @@ public class Lab2 {
 
     public int countSteps(double leftBound, double rightBound, double step) {
         int stepsCount = 0;
-        for (double counter = leftBound; Double.compare(counter, rightBound) <= 0; counter += step) {
+        for (double counter = leftBound; DoubleUtils.lessOrEqual(counter, rightBound); counter += step) {
+
             stepsCount++;
         }
         return stepsCount;
@@ -34,40 +35,36 @@ public class Lab2 {
     public double[] calculateXValues(double leftBound, double rightBound, double step) {
         int stepsCount = countSteps(leftBound, rightBound, step);
         double[] results = new double[stepsCount];
-        for (double counter = leftBound, i = 0; Double.compare(counter, rightBound) <= 0; counter += step, i++) {
+        for (double counter = leftBound, i = 0; DoubleUtils.lessOrEqual(counter, rightBound); counter += step, i++) {
             results[(int) i] = counter;
         }
         return results;
     }
 
-    public double findMaxY(double[] yValues) {
+    public int findMaxElementOrdinal(double[] yValues) {
         double max = yValues[0];
-        for (double actualYValue : yValues) {
-            if (Double.compare(actualYValue, max) > 0) {
-                max = actualYValue;
-            }
-        }
-        return max;
-    }
-
-    public int findElementOrdinal(double[] yValues, double targetY) {
-        int ordinal = -1;
+        int maxElementOrdinal = 0;
         for (int i = 0; i < yValues.length; i++) {
-            if (Double.compare(yValues[i], targetY) == 0) {
-                ordinal = i;
+            double actualYValue = yValues[i];
+            if (DoubleUtils.greaterThan(actualYValue, max)) {
+                max = actualYValue;
+                maxElementOrdinal = i;
             }
         }
-        return ordinal;
+        return maxElementOrdinal;
     }
 
-    public double findMinY(double[] yValues) {
+    public int findMinElementOrdinal(double[] yValues) {
         double min = yValues[0];
-        for (double actualYValue : yValues) {
-            if (Double.compare(actualYValue, min) < 0) {
+        int minElementOrdinal = 0;
+        for (int i = 0; i < yValues.length; i++) {
+            double actualYValue = yValues[i];
+            if (DoubleUtils.lessThan(actualYValue, min)) {
                 min = actualYValue;
+                minElementOrdinal = i;
             }
         }
-        return min;
+        return minElementOrdinal;
     }
 
     public double sum(double[] yValues) {
