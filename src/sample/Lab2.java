@@ -10,18 +10,13 @@ public class Lab2 {
         } else if (DoubleUtils.equals(x, a)) {
             y = x * Math.sin(a * x);
         } else {
-            y = Math.pow(Math.E, -(a * x)) * Math.cos(a * x);
+            y = Math.exp(-(a * x)) * Math.cos(a * x);
         }
         return y;
     }
 
     public int countSteps(double leftBound, double rightBound, double step) {
-        int stepsCount = 0;
-        for (double counter = leftBound; DoubleUtils.lessOrEqual(counter, rightBound); counter += step) {
-
-            stepsCount++;
-        }
-        return stepsCount;
+        return (int) ((rightBound - leftBound) / step) + 1;
     }
 
     public double[] calculateYValues(double[] xValues) {
@@ -35,8 +30,8 @@ public class Lab2 {
     public double[] calculateXValues(double leftBound, double rightBound, double step) {
         int stepsCount = countSteps(leftBound, rightBound, step);
         double[] results = new double[stepsCount];
-        for (double counter = leftBound, i = 0; DoubleUtils.lessOrEqual(counter, rightBound); counter += step, i++) {
-            results[(int) i] = counter;
+        for (int i = 0; i < stepsCount; i++) {
+            results[i] = leftBound + (i * step);
         }
         return results;
     }
